@@ -16,7 +16,7 @@ namespace Campos_Dealer_Backend.Models.Sales
 
         public required int ProductPrice { get; set; }
 
-        public required DateTime SaleDate { get; set; } = DateTime.Now;
+        public  DateTime SaleDate { get; set; } = DateTime.Now;
 
         public float TotalPrice { get; private set; }
         public SaleModel()
