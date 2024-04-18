@@ -1,5 +1,6 @@
 using Campos_Dealer_Backend.DataContext;
-using Campos_Dealer_Backend.Service;
+using Campos_Dealer_Backend.Service.Customer;
+using Campos_Dealer_Backend.Service.Product;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICustomerInterface, CustomerService>();
+builder.Services.AddScoped<IProductInterface, ProductService>();
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {

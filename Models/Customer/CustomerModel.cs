@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Campos_Dealer_Backend.Models
+namespace Campos_Dealer_Backend.Models.Customer
 {
     public class CustomerModel
     {

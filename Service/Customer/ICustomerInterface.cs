@@ -1,6 +1,7 @@
 ﻿using Campos_Dealer_Backend.Models;
+using Campos_Dealer_Backend.Models.Customer;
 
-namespace Campos_Dealer_Backend.Service
+namespace Campos_Dealer_Backend.Service.Customer
 {
     public interface ICustomerInterface
     {

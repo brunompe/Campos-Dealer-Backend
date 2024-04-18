@@ -1,9 +1,10 @@
 ﻿using Campos_Dealer_Backend.Models;
-using Campos_Dealer_Backend.Service;
+using Campos_Dealer_Backend.Models.Customer;
+using Campos_Dealer_Backend.Service.Customer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Campos_Dealer_Backend.Controllers
+namespace Campos_Dealer_Backend.Controllers.Customer
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -32,7 +33,7 @@ namespace Campos_Dealer_Backend.Controllers
         [HttpPost]
         public async Task<ActionResult<ServiceResponse<List<CustomerModel>>>> CreateCustomer(CustomerModel newCustomer)
         {
-            return Ok(await _customerInterface.CreateCustomer(newCustomer));  
+            return Ok(await _customerInterface.CreateCustomer(newCustomer));
         }
 
         [HttpPut]

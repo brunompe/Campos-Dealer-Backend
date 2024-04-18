@@ -1,8 +1,9 @@
 ﻿using Campos_Dealer_Backend.DataContext;
 using Campos_Dealer_Backend.Models;
-using System.Linq.Expressions;
+using Campos_Dealer_Backend.Models.Customer;
+using Microsoft.EntityFrameworkCore;
 
-namespace Campos_Dealer_Backend.Service
+namespace Campos_Dealer_Backend.Service.Customer
 {
     public class CustomerService : ICustomerInterface
     {
@@ -18,7 +19,7 @@ namespace Campos_Dealer_Backend.Service
 
             try
             {
-                if(newCustomer == null) 
+                if (newCustomer == null)
                 {
                     serviceResponse.Dados = null;
                     serviceResponse.Message = "Informar dados!";
@@ -34,7 +35,8 @@ namespace Campos_Dealer_Backend.Service
                 serviceResponse.Message = "Cliente criado com sucesso!";
 
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 serviceResponse.Message = ex.Message;
                 serviceResponse.Success = false;
@@ -49,7 +51,7 @@ namespace Campos_Dealer_Backend.Service
 
             try
             {
-             
+
                 CustomerModel customer = _context.Customers.FirstOrDefault(x => x.Id == id);
 
                 if (customer == null)
@@ -66,7 +68,8 @@ namespace Campos_Dealer_Backend.Service
 
                 serviceResponse.Dados = _context.Customers.ToList();
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 serviceResponse.Message = ex.Message;
                 serviceResponse.Success = false;
@@ -82,8 +85,8 @@ namespace Campos_Dealer_Backend.Service
             try
             {
                 serviceResponse.Dados = _context.Customers.ToList();
-                
-                if(serviceResponse.Dados.Count == 0)
+
+                if (serviceResponse.Dados.Count == 0)
                 {
                     serviceResponse.Message = "Nenhum Dado Encontrado!";
                 }
@@ -105,7 +108,7 @@ namespace Campos_Dealer_Backend.Service
             {
                 CustomerModel customer = _context.Customers.FirstOrDefault(x => x.Name == name);
 
-                if(customer == null)
+                if (customer == null)
                 {
                     serviceResponse.Dados = null;
                     serviceResponse.Message = "Cliente não encontrado!";
@@ -115,7 +118,8 @@ namespace Campos_Dealer_Backend.Service
                 serviceResponse.Dados = customer;
                 serviceResponse.Message = "Cliente encontrado com sucesso!";
 
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 serviceResponse.Message = ex.Message;
                 serviceResponse.Success = false;
@@ -130,7 +134,7 @@ namespace Campos_Dealer_Backend.Service
 
             try
             {
-                CustomerModel customer = _context.Customers.FirstOrDefault(x => x.Id == updatedCustomer.Id);
+                CustomerModel customer = _context.Customers.AsNoTracking().FirstOrDefault(x => x.Id == updatedCustomer.Id);
 
                 if (customer == null)
                 {
@@ -145,7 +149,7 @@ namespace Campos_Dealer_Backend.Service
                 serviceResponse.Dados = _context.Customers.ToList();
 
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
                 serviceResponse.Message = ex.Message;
                 serviceResponse.Success = false;
